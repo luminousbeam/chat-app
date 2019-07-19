@@ -14,3 +14,18 @@ describe("get messages", () => {
     })
   })
 })
+
+describe("get messages from specific user", () => {
+  it("should return 200 Ok", (done) => {
+    request.get('http://localhost:3000/messages/luminous', (err, res) => {
+      expect(res.statusCode).toEqual(200)
+      done()
+    })
+  })
+  it("name should be luminous", (done) => {
+    request.get('http://localhost:3000/messages/luminous', (err, res) => {
+      expect(JSON.parse(res.body)[0].name).toEqual("luminous")
+      done()
+    })
+  })
+})
